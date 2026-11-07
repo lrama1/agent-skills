@@ -57,7 +57,16 @@ Work in small steps, following the design and the repo's existing patterns and c
 
 Run the full build, lint and tests. Then, for each in-scope acceptance criterion, confirm that a passing test or other evidence covers it. List any that are not covered. Do not report success if checks failed or were not run; say what failed or why you could not run it.
 
-### 7. Finish
+### 7. Update related documentation
+
+Once the build and tests pass, edit the docs listed under Related documentation in the design (conventions §11): the README, API descriptions, architecture docs, guides and so on.
+
+- Make only the listed changes, as small edits in each doc's existing style.
+- Regenerate generated docs with the project's command instead of editing them by hand. Skip changelogs the repo generates automatically.
+- If you find another doc that the change makes wrong, add it to the table, update it, and mention it in the report.
+- If you could not update a doc, say so in the report.
+
+### 8. Finish
 
 - Spec changelog rows: `pending` → `done`. Update the design changelog.
 - Update `code_paths` with the files and folders you added.
@@ -67,7 +76,7 @@ Run the full build, lint and tests. Then, for each in-scope acceptance criterion
 
 Reply briefly with:
 
-- the files changed;
+- the files changed, including the related docs you updated;
 - a table of acceptance criteria and the test that covers each;
 - design deviations and assumptions;
 - failed or skipped checks;
@@ -77,4 +86,4 @@ Reply briefly with:
 
 - Never implement from a `draft` or `deprecated` feature, or with open questions.
 - Stay within the pending scope.
-- The documents must match the code when you finish.
+- The feature documents and the related project docs must match the code when you finish.

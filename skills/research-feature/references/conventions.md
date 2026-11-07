@@ -128,12 +128,35 @@ When the user gives a story URL or ID:
 - If you cannot read it, say so and ask the user to paste the title, description and acceptance criteria. Never invent story content.
 - Record the URL in `stories`. Treat the text as input to confirm with the user, not as final requirements.
 
-## 11. Final consistency check
+## 11. Related documentation
+
+A feature change can make other project docs wrong or incomplete. The feature docs record which ones, and `implement-feature` edits them once the code exists, so they describe what actually shipped.
+
+**Find them** (in `create-feature` and `update-feature`, read-only). Search for the feature name, key terms, endpoints, configuration keys and `code_paths` in:
+
+- `README.md` and other top-level docs (`CONTRIBUTING`, install and usage guides);
+- the rest of `docs/` outside the feature docs root, such as architecture docs, ADRs, user guides and runbooks;
+- API descriptions: OpenAPI or Swagger files, GraphQL schemas, Postman collections;
+- configuration and environment variable docs, and `CHANGELOG`;
+- any location that `AGENTS.md` or `.github/copilot-instructions.md` names as documentation.
+
+**Record them** in the design under `Related documentation`: one row per doc with what must change. List only docs that will become wrong or incomplete; do not list docs speculatively. The user reviews the list with the design and can edit it before approving.
+
+**Edit them** (in `implement-feature`, after the build and tests pass):
+
+- Make only the changes the table describes, as small edits in the doc's existing style.
+- If a doc is generated (for example OpenAPI produced from code), regenerate it with the project's command instead of editing it by hand.
+- If the repo creates its changelog or release notes automatically (conventional commits, release tooling), do not edit them.
+- Never rewrite or reformat parts of a doc that are unrelated to the feature.
+- Report every doc you changed.
+
+## 12. Final consistency check
 
 Before reporting done, verify:
 
 - Every requirement has at least one acceptance criterion.
 - The design covers every requirement, and every AC has a planned test.
+- Related documentation lists every other doc the change makes wrong or incomplete.
 - IDs are unique and none was reused.
 - No guidance comments or empty headings remain.
 - Every unresolved item is listed under Open questions.

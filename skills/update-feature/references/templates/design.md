@@ -35,6 +35,14 @@ Implements [spec.md](./spec.md).
 |---|---|---|---|---|
 | | | <link> | | |
 
+## Related documentation
+
+<!-- Other docs this change makes wrong or incomplete (README, API specs, architecture docs, guides). implement-feature edits them after the build. List only docs that really need a change. Delete if none. -->
+
+| Doc | What must change |
+|---|---|
+| <path> | <change> |
+
 ## Decisions
 
 <!-- One entry per design choice, with the alternatives you rejected. -->

@@ -14,7 +14,8 @@ change: <the pending changelog row this list implements>
 - [ ] 2. <next step> (FR-1, AC-1.2)
 - [ ] 3. Add or update tests for the acceptance criteria above
 - [ ] 4. Run build, lint and tests; fix failures
-- [ ] 5. Update the docs: changelog State, `code_paths`, status
+- [ ] 5. Update the related docs listed in the design (README, API docs, ...)
+- [ ] 6. Update the feature docs: changelog State, `code_paths`, status
 
 ## Notes for resuming
 

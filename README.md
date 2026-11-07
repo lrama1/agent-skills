@@ -104,7 +104,7 @@ Creates a feature that does not exist yet.
 1. **Intake:** asks for the feature name, a description, story URL(s) (Jira, Azure DevOps, GitHub) and the journey. It reads the story if it has a tool for it; otherwise it asks you to paste it.
 2. **Research:** reads project guidance, finds comparable features, notes coding and test patterns, and checks 2nd/3rd-party API docs and versions.
 3. **Spec:** asks up to 5 questions, then writes requirements with acceptance criteria.
-4. **Design:** asks up to 5 more questions, then writes the approach, changes, external dependencies, decisions and test plan.
+4. **Design:** asks up to 5 more questions, then writes the approach, changes, external dependencies, decisions and test plan. It also lists the other project docs the feature will make wrong or incomplete (README, API docs, ...) under **Related documentation**, without editing them.
 5. **Approval:** runs a consistency check and asks whether to approve. It never approves on its own.
 
 ### `/update-feature`
@@ -114,6 +114,7 @@ Changes a feature that exists.
 - Finds the feature, or lets you pick one from a list. If it does not exist, it offers to create it using the `create-feature` flow.
 - Reads the current docs and the code, and flags **drift** where the code no longer matches the docs.
 - Edits the spec and design **in place** so they show the feature as it will be, keeps requirement IDs stable, and adds a changelog row marked `pending`.
+- Updates the design's **Related documentation** list: the README, API descriptions, architecture docs and guides that the change makes wrong. It lists them but does not edit them; `/implement-feature` does, once the code exists.
 - Pure wording fixes skip the interview and approval.
 
 ### `/research-feature`
@@ -132,7 +133,8 @@ Builds the pending changes of an approved feature.
 - Builds only the `pending` changelog rows. For a large change it writes a temporary `tasks.md`; for a small one it uses the session's own task list.
 - Writes tests tagged with acceptance-criteria IDs, runs build, lint and tests, and reports which criteria are covered.
 - If the design turns out to be wrong, it stops and asks, then updates the design so the docs never silently diverge from the code.
-- Updates the changelog and status. It does not commit or push.
+- After the build and tests pass, it edits the **related docs** listed in the design (README, API descriptions, guides), with small edits in each doc's style. It regenerates generated docs with the project's command and skips automatically generated changelogs.
+- Updates the feature changelog and status. It does not commit or push.
 
 ## The documents
 
@@ -157,7 +159,7 @@ The docs root defaults to `docs/journeys`. If your `AGENTS.md` or `.github/copil
 | Document | Contents |
 |---|---|
 | `spec.md` | Front matter (`feature`, `journey`, `status`, `stories`, `code_paths`); Context; Requirements (`FR-n`, `NFR-n`) each with Given/When/Then acceptance criteria (`AC-n.m`); Out of scope / Future; Known issues; Clarifications; Open questions; Changelog. |
-| `design.md` | Approach; Architecture fit (links to example files); Changes; External dependencies (name, version, source); Decisions (`D-n`); Security and data; Risks and rollout; Test plan mapping each AC to a test; Open questions; Changelog. |
+| `design.md` | Approach; Architecture fit (links to example files); Changes; External dependencies (name, version, source); Related documentation (other project docs to update); Decisions (`D-n`); Security and data; Risks and rollout; Test plan mapping each AC to a test; Open questions; Changelog. |
 | `feature.md` | Both of the above in one file. |
 | `tasks.md` | Checklist tied to requirement IDs. Created only for large changes and deleted when done. |
 
@@ -327,6 +329,7 @@ jobs:
 - **Journeys as the top-level grouping.** Features are easier to find by the flow they belong to than by a flat list or a number.
 - **Approval is a human act.** The status gate means the agent cannot build from a document nobody has reviewed.
 - **Skills never write code except `implement-feature`.** Spec work and coding are separate steps with a review between them.
+- **Related docs are found early and edited late.** `create-feature` and `update-feature` list the README, API docs and guides that will need changes, so you can review the list with the design. `implement-feature` edits them after the code works, so they describe what actually shipped.
 - **Everything is explicit.** The skills do not run by themselves, and nothing is committed unless you ask.
 
 **Not included on purpose:** a `/verify-feature` skill, automatic archiving, a registry or index of features, per-feature ADR files, and CLI tooling. Add them when the team asks for them.

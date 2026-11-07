@@ -50,10 +50,11 @@ Ask the design-phase questions (max 5) per the protocol. Typical topics are data
 - Fill in External dependencies with versions and sources.
 - Record each choice under Decisions.
 - Map every acceptance criterion to a planned test.
+- Find the other project docs this feature will make wrong or incomplete (conventions §11) and list them under Related documentation. Do not edit them now; `/implement-feature` does that.
 
 ### 5. Check and approve
 
-Run the final consistency check in conventions §11 and fix what it finds. Add a changelog row `Initial version` with State `pending` to the spec (and a row in the design). Ask the approval question from the protocol (§7). Set `status: approved` only if the user chooses it; otherwise leave `draft`.
+Run the final consistency check in conventions §12 and fix what it finds. Add a changelog row `Initial version` with State `pending` to the spec (and a row in the design). Ask the approval question from the protocol (§7). Set `status: approved` only if the user chooses it; otherwise leave `draft`.
 
 ### 6. Report
 
@@ -66,7 +67,7 @@ Reply briefly with:
 
 ## Rules
 
-- Create files only under the docs root. Do not edit source code.
+- Create files only under the docs root. Do not edit source code or other project docs; list the docs that need changes instead.
 - Do not ask what you can find in the repo or the story.
 - Never invent story details, API behavior or requirements. Use `[NEEDS CLARIFICATION: ...]`.
 - Keep each document as short as it can be while staying testable.

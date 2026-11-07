@@ -59,6 +59,7 @@ Edit the documents so they describe the feature **as it will be**, in present te
 
 - Change affected requirements and acceptance criteria. Keep their IDs. New items continue the numbering; removed items are deleted from the body. Never reuse an ID.
 - Update the design: approach, changes, dependencies and test plan. Add new `D-n` decisions.
+- Update Related documentation: find the other project docs this change makes wrong or incomplete (conventions §11), and add, change or remove rows. Do not edit those docs now; `/implement-feature` does that.
 - Add the answers to Clarifications and Decisions.
 - Add a changelog row to the spec (State `pending`) and one to the design. Name the affected IDs in `Affects`.
 - Set `status: draft` while the change is unapproved.
@@ -67,7 +68,7 @@ Do not leave change history in the body of any document.
 
 ### 6. Check and approve
 
-Run the final consistency check (conventions §11). Ask the approval question (protocol §7). Set `status: approved` only if the user chooses it.
+Run the final consistency check (conventions §12). Ask the approval question (protocol §7). Set `status: approved` only if the user chooses it.
 
 ### 7. Report
 
@@ -75,11 +76,12 @@ Reply briefly with:
 
 - links to the edited files;
 - a summary of what changed (IDs added, changed and removed);
+- the other docs that will need changes (from Related documentation);
 - assumptions and open questions;
 - the next step: `/implement-feature <feature-name>`.
 
 ## Rules
 
-- Edit only documents under the docs root. Do not change source code.
+- Edit only the feature's own documents under the docs root. Do not change source code or other project docs (README, API docs, ...); list them under Related documentation instead.
 - Keep documents as current truth; history lives only in the changelog.
 - Never invent requirements or API behavior. Use `[NEEDS CLARIFICATION: ...]`.

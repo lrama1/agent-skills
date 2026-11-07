@@ -76,7 +76,7 @@ Create the documents from the templates, describing behavior **as built**:
 
 ### 6. Check and report
 
-Run the final consistency check (conventions §11). Reply briefly with links to the files, the confidence level, and the untested or unknown areas. Suggest `/update-feature <feature-name>` for any change.
+Run the final consistency check (conventions §12). Reply briefly with links to the files, the confidence level, and the untested or unknown areas. Suggest `/update-feature <feature-name>` for any change.
 
 ## Rules
 

@@ -54,6 +54,14 @@ code_paths:
 
 <!-- Name, version, source link, what we rely on, limits/auth/errors. Delete if none. -->
 
+### Related documentation
+
+<!-- Other docs this change makes wrong or incomplete (README, API specs, architecture docs, guides). implement-feature edits them after the build. List only docs that really need a change. Delete if none. -->
+
+| Doc | What must change |
+|---|---|
+| <path> | <change> |
+
 ### Decisions
 
 #### D-1 <decision title>
