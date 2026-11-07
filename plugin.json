@@ -1,0 +1,7 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "lean-sdd",
+  "version": "0.1.0",
+  "description": "Lean spec-driven development skills: create-feature, update-feature, research-feature and implement-feature. Plain-Markdown specs and designs stored in the repo.",
+  "keywords": ["spec-driven-development", "specs", "design", "agent-skills", "workflow"]
+}
